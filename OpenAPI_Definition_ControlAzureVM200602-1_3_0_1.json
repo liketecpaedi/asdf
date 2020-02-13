@@ -1,0 +1,304 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "ControlAzureVM200602-1",
+        "description": "Import from \"ControlAzureVM200602-1\" Function App",
+        "version": "1.0"
+    },
+    "servers": [{
+        "url": "https://your_apim_service_name.azure-api.net/ControlAzureVM200602-1"
+    }],
+    "paths": {
+        "/virtualmachines/virtualmachine/start": {
+            "post": {
+                "summary": "start",
+                "description": "start",
+                "operationId": "post-start",
+                "parameters": [{
+                    "name": "SubscriptionId",
+                    "in": "query",
+                    "description": "The GUID of the Subscription id",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "ResourceGroup",
+                    "in": "query",
+                    "description": "The name oh the Resource Group",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "VmName",
+                    "in": "query",
+                    "description": "The name oh the virtual machine",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VirtualmachinesVirtualmachineStartPost200ApplicationJsonResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/virtualmachines/virtualmachine/stop": {
+            "post": {
+                "summary": "stop",
+                "description": "stop",
+                "operationId": "post-stop",
+                "parameters": [{
+                    "name": "SubscriptionId",
+                    "in": "query",
+                    "description": "The GUID of the Subscription id",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "ResourceGroup",
+                    "in": "query",
+                    "description": "The name oh the Resource Group",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "VmName",
+                    "in": "query",
+                    "description": "The name oh the virtual machine",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VirtualmachinesVirtualmachineStopPost200ApplicationJsonResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/virtualmachines": {
+            "get": {
+                "summary": "virtualmachines",
+                "description": "show all virtual machines",
+                "operationId": "get-virtualmachines",
+                "responses": {
+                    "200": {
+                        "description": "Success operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VirtualmachinesGet200ApplicationJsonResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/virtualmachines/virtualmachine": {
+            "get": {
+                "summary": "virtualmachine",
+                "description": "Virtualmachine Detail",
+                "operationId": "get-virtualmachine",
+                "parameters": [{
+                    "name": "SubscriptionId",
+                    "in": "query",
+                    "description": "The GUID of the Subscription id",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "ResourceGroup",
+                    "in": "query",
+                    "description": "The name oh the Resource Group",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }, {
+                    "name": "VmName",
+                    "in": "query",
+                    "description": "The name oh the virtual machine",
+                    "required": true,
+                    "schema": {
+                        "type": "string"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/VirtualmachinesVirtualmachineGet200ApplicationJsonResponse"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "VirtualmachinesGet200ApplicationJsonResponse": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "OSType": {
+                            "type": "string",
+                            "example": "Windows"
+                        },
+                        "Computername": {
+                            "type": "string",
+                            "example": "Servername"
+                        },
+                        "ResourceGroup": {
+                            "type": "string",
+                            "example": "Resourcegroupname"
+                        },
+                        "SunscriptionId": {
+                            "type": "string",
+                            "example": "123456789-1236-1234-1234-12345678"
+                        },
+                        "Provisioningstate": {
+                            "type": "string",
+                            "example": "Provisioning suceeded"
+                        },
+                        "Powerstate": {
+                            "type": "string",
+                            "example": "VM Deallocated"
+                        },
+                        "ISPowerOn": {
+                            "type": "boolean",
+                            "example": false
+                        }
+                    }
+                }
+            },
+            "VirtualmachinesVirtualmachineGet200ApplicationJsonResponse": {
+                "type": "object",
+                "properties": {
+                    "VmSize": {
+                        "type": "string",
+                        "example": "Standard_B1s"
+                    },
+                    "Offer": {
+                        "type": "string",
+                        "example": "WindowsServer"
+                    },
+                    "Sku": {
+                        "type": "string",
+                        "example": "2016-Datacenter"
+                    },
+                    "Version": {
+                        "type": "string",
+                        "example": "latest"
+                    },
+                    "OsType": {
+                        "type": "string",
+                        "example": "Windows"
+                    },
+                    "ComputerName": {
+                        "type": "string",
+                        "example": "Computer Name"
+                    },
+                    "ResourceGroup": {
+                        "type": "string",
+                        "example": "Resource Group Name"
+                    },
+                    "SubscriptionId": {
+                        "type": "string",
+                        "example": "123456789-1236-1234-1234-12345678"
+                    },
+                    "AdminUsername": {
+                        "type": "string",
+                        "example": "Admin"
+                    },
+                    "ProvisionVMAgent": {
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "EnableAutomaticUpdates": {
+                        "type": "boolean",
+                        "example": false
+                    },
+                    "Location": {
+                        "type": "string",
+                        "example": "Northeurope"
+                    },
+                    "Provisioningstate": {
+                        "type": "string",
+                        "example": "Provisioning suceeded"
+                    },
+                    "Powerstate": {
+                        "type": "string",
+                        "example": "VM Deallocated"
+                    },
+                    "ISPowerOn": {
+                        "type": "boolean",
+                        "example": false
+                    }
+                }
+            },
+            "VirtualmachinesVirtualmachineStartPost200ApplicationJsonResponse": {
+                "type": "object",
+                "properties": {
+                    "IsSuccessStatusCode": {
+                        "type": "boolean",
+                        "example": true
+                    }
+                }
+            },
+            "VirtualmachinesVirtualmachineStopPost200ApplicationJsonResponse": {
+                "type": "object",
+                "properties": {
+                    "IsSuccessStatusCode": {
+                        "type": "boolean",
+                        "example": true
+                    }
+                }
+            }
+        },
+        "securitySchemes": {
+            "apiKeyHeader": {
+                "type": "apiKey",
+                "name": "Ocp-Apim-Subscription-Key",
+                "in": "header"
+            },
+            "apiKeyQuery": {
+                "type": "apiKey",
+                "name": "SubscriptionID",
+                "in": "query"
+            }
+        }
+    },
+    "security": [{
+        "apiKeyHeader": []
+    }, {
+        "apiKeyQuery": []
+    }]
+}
